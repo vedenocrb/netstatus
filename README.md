@@ -1,54 +1,42 @@
-# Description NetStatus
+# Описание NetStatus
+Веб-приложение для мониторинга статуса подключения устройств с использованием PING.
 
-A web-based application for monitoring device connectivity status using PING.
+## Возможности
+- Мониторинг до 9 устройств одновременно
+- Обновление статуса в реальном времени каждые 10 секунд
+- Звуковые уведомления при изменении состояния подключения
+- Простое управление устройствами (добавление/удаление)
+- Адаптивный макет сетки
+- Интерфейс в темном режиме
+- Адаптация под мобильные устройства
+- Поддержка нескольких языков (английский/русский)
+- Автоматические попытки переподключения
+- Журнал истории состояний
 
-## Features
-- Monitor up to 9 devices simultaneously
-- Real-time status updates every 10 seconds
-- Sound notifications for connection changes
-- Easy device management (add/remove)
-- Responsive grid layout
-- Dark mode interface
-- Mobile-friendly design
-- Multi-language support (English/Russian)
-- Automatic reconnection attempts
-- Status history logging
+## Требования
+- XAMPP (или другой веб-сервер с PHP и MySQL)
+- PHP 7.0 или выше
+- MySQL 5.6 или выше
+- Современный веб-браузер с поддержкой JavaScript
 
-## Requirements
-- XAMPP (or other web server with PHP and MySQL)
-- PHP 7.0 or higher
-- MySQL 5.6 or higher
-- Modern web browser with JavaScript enabled
+## Установка
 
-## Installation
+### Быстрая установка (XAMPP)
+1. Установите XAMPP, если он еще не установлен
+2. Скопируйте все файлы в директорию htdocs XAMPP (например, `C:\xampp\htdocs\netstatus`)
+3. Запустите Apache и MySQL в панели управления XAMPP
+4. Откройте веб-браузер и перейдите по адресу `http://localhost/netstatus/setup/install.php`
+5. Следуйте мастеру установки:
+   - Системные требования будут проверены автоматически
+   - База данных будет настроена автоматически с настройками XAMPP по умолчанию
 
-### Quick Install (XAMPP)
-1. Install XAMPP if you haven't already
-2. Copy all files to your XAMPP's htdocs directory (e.g., `C:\xampp\htdocs\netstatus`)
-3. Start Apache and MySQL in XAMPP Control Panel
-4. Open your web browser and navigate to `http://localhost/netstatus/setup/install.php`
-5. Follow the installation wizard:
-   - System requirements will be checked automatically
-   - Database will be configured automatically with default XAMPP settings
-   - After installation, you can log in with:
+## Звуковые файлы
+Поместите следующие звуковые файлы в директорию `sounds`:
+- `connected.mp3`: Воспроизводится при подключении устройства
+- `disconnected.mp3`: Воспроизводится при отключении устройства
+- `alert.mp3`: Воспроизводится, когда все устройства отключены
 
-### Manual Installation
-1. Set up your web server and ensure PHP and MySQL are installed
-2. Copy all files to your web server directory
-3. Navigate to the setup directory in your web browser
-4. Follow the installation wizard:
-   - Verify system requirements
-   - Configure database connection
-   - Installation will complete automatically
-5. Log in with the default credentials and change the password
-
-## Sound Files
-Place the following sound files in the `sounds` directory:
-- `connected.mp3`: Plays when a device connects
-- `disconnected.mp3`: Plays when a device disconnects
-- `alert.mp3`: Plays when all devices are disconnected
-
-## Directory Structure
+## Структура директорий
 
 ```
 netstatus/
@@ -76,17 +64,24 @@ netstatus/
 └── README.md
 ```
 
-## Usage
-1. Open the application in your web browser
-2. Log in using your administrator credentials
-3. Click "ADD DEVICE" to add a new device
-4. Enter the device name and IP address
-5. The application will automatically start monitoring the device
-6. To remove a device, hover over its card and click "Remove Device"
+## Использование
+1. Откройте приложение в веб-браузере
+2. Войдите, используя учетные данные администратора
+3. Нажмите "ДОБАВИТЬ УСТРОЙСТВО" для добавления нового устройства
+4. Введите имя устройства и IP-адрес
+5. Приложение автоматически начнет мониторинг устройства
+6. Для удаления устройства наведите курсор на его карточку и нажмите "Удалить устройство"
 
-## Support
+## Функции
+- Мониторинг статуса устройств в реальном времени
+- Звуковые уведомления при изменении статуса
+- Простое управление устройствами
+- Адаптивный дизайн
+- Интерфейс в темном режиме
+- Автоматическое обновление статуса каждые 10 секунд
 
-For support or bug reports, please create an "issue" in the project repository.
+## Поддержка
+Для получения поддержки или сообщения об ошибках создайте "issue" в репозитории проекта.
 
-## License
-This software is developed for Vedenskaya CRB. All rights reserved.
+## Лицензия
+Это программное обеспечение разработано для ГБУ "Веденская ЦРБ". Все права защищены.
