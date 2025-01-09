@@ -1,0 +1,361 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 98%;
+    margin: 20px auto;
+    padding: 0 10px;
+    width: 100%;
+    flex: 1;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(8px, 1.5vw, 15px);
+    margin-bottom: 20px;
+}
+
+.device-card {
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    padding: clamp(12px, 2vw, 20px);
+    text-align: center;
+    min-height: clamp(180px, 25vh, 250px);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.device-card.empty {
+    border: 2px dashed #444;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    justify-content: center;
+    align-items: center;
+}
+
+.device-card.empty i {
+    margin-bottom: 10px;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.device-card.empty:hover i {
+    color: #fff;
+}
+
+.device-card.empty p {
+    color: #666;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.device-card.empty:hover {
+    border-color: #666;
+    background-color: #333;
+}
+
+.device-card.empty:hover p {
+    color: #fff;
+}
+
+.device-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.device-name {
+    font-size: clamp(1.2em, 2.5vw, 1.5em);
+    margin-bottom: clamp(8px, 1.5vw, 10px);
+    word-wrap: break-word;
+}
+
+.device-ip {
+    color: #888;
+    margin-bottom: clamp(12px, 2vw, 15px);
+    font-size: clamp(0.9em, 1.8vw, 1.1em);
+}
+
+.status-indicator {
+    padding: clamp(8px, 1.5vw, 10px);
+    margin: clamp(8px, 1.5vw, 10px) 0;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: clamp(0.9em, 1.8vw, 1.1em);
+}
+
+.status-indicator.connected {
+    background-color: #00ff9d;
+    color: #000;
+}
+
+.status-indicator.disconnected {
+    background-color: #ff4444;
+    animation: flash 1s infinite;
+}
+
+@keyframes flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.last-seen {
+    font-size: clamp(0.8em, 1.6vw, 0.9em);
+    color: #888;
+    margin-top: auto;
+    padding-top: 10px;
+}
+
+.plug-icon {
+    display: none;
+}
+
+.action-icons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.device-card:hover .action-icons {
+    opacity: 1;
+}
+
+.action-icons i {
+    cursor: pointer;
+    font-size: 1.2em;
+    color: #888;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.action-icons i:hover {
+    transform: scale(1.1);
+}
+
+.action-icons .fa-edit:hover {
+    color: #4CAF50;
+}
+
+.action-icons .fa-trash-alt:hover {
+    color: #ff4444;
+}
+
+.button-group {
+    display: none;
+}
+
+.device-card.empty .action-icons {
+    display: none;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #1a1a1a;
+    color: white;
+}
+
+.device-comment {
+    font-size: clamp(0.8em, 1.6vw, 1em);
+    color: #aaa;
+    margin-bottom: 10px;
+    flex-grow: 1;
+    word-wrap: break-word;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+    min-height: 80px;
+}
+
+.modal button,
+.modal input[type="submit"],
+.modal input[type="button"] {
+    display: inline-block;
+    padding: 4px 10px;
+    margin-left: 8px;
+    background-color: #2a2a2a;
+    color: #666;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid #444;
+    font-size: 0.9em;
+}
+
+.modal button:hover,
+.modal input[type="submit"]:hover,
+.modal input[type="button"]:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.modal button:first-child {
+    margin-left: 0;
+}
+
+.modal form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal .button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+footer {
+    background-color: #2a2a2a;
+    padding: 15px 0;
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 0;
+    color: #888;
+}
+
+.language-selector {
+    text-align: right;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.lang-btn {
+    display: inline-block;
+    padding: 4px 10px;
+    margin-left: 8px;
+    background-color: #2a2a2a;
+    color: #666;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid #444;
+    font-size: 0.9em;
+}
+
+.lang-btn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.lang-btn.active {
+    background-color: #444;
+    color: #fff;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .device-card {
+        min-height: 180px;
+    }
+}
+
+/* Dark mode optimization */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+        color: #ffffff;
+    }
+    
+    .device-card {
+        background-color: #2a2a2a;
+    }
+    
+    .modal-content {
+        background-color: #2a2a2a;
+        color: #ffffff;
+    }
+    
+    input[type="text"] {
+        background-color: #333;
+        color: #fff;
+        border: 1px solid #444;
+    }
+    
+    input[type="text"]:focus {
+        border-color: #666;
+    }
+    
+    textarea {
+        background-color: #333;
+        color: #fff;
+        border: 1px solid #444;
+    }
+    
+    textarea:focus {
+        border-color: #666;
+    }
+}
