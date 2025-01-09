@@ -1,4 +1,4 @@
-# Description NetStatus
+# NetStatus 1.0 (beta)
 
 A web-based application for monitoring device connectivity status using PING.
 
